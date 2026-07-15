@@ -4,7 +4,6 @@ import { Button } from './ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/card';
 import { Label } from './ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from './ui/select';
-import { Separator } from './ui/separator';
 import { toast } from 'sonner';
 import { ColorPicker } from './ColorPicker';
 import { ImageColorExtractor } from './ImageColorExtractor';
@@ -250,7 +249,7 @@ export function MeshGradientGenerator() {
 
   return (
     <div className="container mx-auto p-4 max-w-7xl">
-      <div className="mb-4 flex gap-3 items-start">
+      <div className="mb-3 flex gap-3 items-start">
         <div className="flex-shrink-0 mt-1">
           <Layers className="size-8 text-accent-foreground" strokeWidth={1.5} />
         </div>
@@ -264,7 +263,7 @@ export function MeshGradientGenerator() {
 
       <div className="grid lg:grid-cols-2 gap-4">
         {/* Controls Panel */}
-        <div className="space-y-4 flex flex-col">
+        <div className="space-y-3 flex flex-col">
           <Card className="border-0">
             <CardHeader>
               <CardTitle>Color Palette</CardTitle>
@@ -272,7 +271,7 @@ export function MeshGradientGenerator() {
                 Add colors manually or extract from an image
               </CardDescription>
             </CardHeader>
-            <CardContent className="space-y-4">
+            <CardContent className="space-y-3">
               <ColorPicker
                 colors={colors}
                 onColorsChange={handleColorsChange}
@@ -289,8 +288,6 @@ export function MeshGradientGenerator() {
                 Randomize Colors
               </Button>
 
-              <Separator />
-
               <ImageColorExtractor
                 onColorsExtracted={handleColorsExtracted}
                 maxColors={8}
@@ -305,7 +302,7 @@ export function MeshGradientGenerator() {
                 Choose a pattern for your mesh gradient
               </CardDescription>
             </CardHeader>
-            <CardContent className="space-y-4">
+            <CardContent className="space-y-3">
               <div className="space-y-2">
                 <Label className="text-xs">Template</Label>
                 <Select value={selectedTemplate} onValueChange={handleTemplateChange}>
@@ -331,8 +328,6 @@ export function MeshGradientGenerator() {
                 Generate Random
               </Button>
 
-              <Separator />
-
               <SVGTemplateUploader
                 onTemplateLoaded={handleTemplateLoaded}
                 onTemplateClear={handleTemplateClear}
@@ -344,7 +339,7 @@ export function MeshGradientGenerator() {
         </div>
 
         {/* Preview Panel */}
-        <div className="lg:sticky lg:top-4 space-y-4 flex flex-col h-fit w-full">
+        <div className="lg:sticky lg:top-4 space-y-3 flex flex-col h-fit w-full">
           <Card className="w-full border-0">
             <CardHeader>
               <CardTitle>Preview</CardTitle>
@@ -353,7 +348,7 @@ export function MeshGradientGenerator() {
               </CardDescription>
             </CardHeader>
             <CardContent className="w-full">
-              <div className="mesh-gradient-preview aspect-square rounded-lg overflow-hidden bg-white max-h-[60vh] w-full">
+              <div className="mesh-gradient-preview aspect-square rounded-lg overflow-hidden bg-white max-h-[46vh] w-full">
                 <MeshGradient points={meshPoints} width={1080} height={1080} />
               </div>
             </CardContent>

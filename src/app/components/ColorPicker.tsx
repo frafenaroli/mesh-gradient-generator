@@ -132,7 +132,7 @@ const ColorItem = ({ color, index, moveColor, handleColorChange, handleRemoveCol
           type="color"
           value={color}
           onChange={(e) => handleColorChange(index, e.target.value)}
-          className="w-8 h-8 rounded-md cursor-pointer border-2 border-input"
+          className="w-6 h-6 rounded-md cursor-pointer border border-input"
           style={{
             padding: 0,
             appearance: 'none',
