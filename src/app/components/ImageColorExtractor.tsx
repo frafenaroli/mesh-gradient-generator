@@ -1,5 +1,5 @@
 import { useState, useRef } from 'react';
-import { Upload, Wand2, X } from 'lucide-react';
+import { Upload, Loader2, X } from 'lucide-react';
 import { Button } from './ui/button';
 import { Label } from './ui/label';
 import { rgbToHex } from './mesh-utils';
@@ -233,8 +233,10 @@ export function ImageColorExtractor({ onColorsExtracted, maxColors }: ImageColor
 
   return (
     <div className="space-y-2">
-      <Label className="text-xs">Extract from Image</Label>
-      <p className="text-xs text-muted-foreground">
+      <Label className="text-xs uppercase tracking-wide text-muted-foreground font-medium">
+        Extract from Image
+      </Label>
+      <p className="text-[13px] text-muted-foreground leading-tight">
         Upload an image to extract its color palette
       </p>
 
@@ -251,32 +253,32 @@ export function ImageColorExtractor({ onColorsExtracted, maxColors }: ImageColor
           onClick={() => fileInputRef.current?.click()}
           disabled={isExtracting}
           variant="outline"
-          className="w-full h-8 text-xs"
+          className="w-full h-9 text-[13px]"
         >
           {isExtracting ? (
             <>
-              <Wand2 className="size-3 mr-1 animate-spin" />
+              <Loader2 className="size-3.5 mr-1 animate-spin" />
               Extracting...
             </>
           ) : (
             <>
-              <Upload className="size-3 mr-1" />
+              <Upload className="size-3.5 mr-1" />
               Upload Image
             </>
           )}
         </Button>
       ) : (
         <div className="flex items-center gap-2">
-          <div className="flex-1 px-2 py-1.5 rounded-md border border-input bg-muted text-xs truncate">
+          <div className="flex-1 min-w-0 px-3 py-2 rounded-md border border-border bg-muted text-[13px] truncate">
             {fileName}
           </div>
           <Button
             onClick={handleClearImage}
             variant="outline"
             size="icon"
-            className="h-8 w-8"
+            className="h-9 w-9 flex-shrink-0"
           >
-            <X className="size-3" />
+            <X className="size-3.5" />
           </Button>
         </div>
       )}

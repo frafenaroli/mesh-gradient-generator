@@ -211,8 +211,10 @@ export function SVGTemplateUploader({ onTemplateLoaded, onTemplateClear, colors,
 
   return (
     <div className="space-y-2">
-      <Label className="text-xs">Upload SVG Template</Label>
-      <p className="text-xs text-muted-foreground">
+      <Label className="text-xs uppercase tracking-wide text-muted-foreground font-medium">
+        Upload SVG Template
+      </Label>
+      <p className="text-[13px] text-muted-foreground leading-tight">
         Upload an existing SVG to use its structure with your colors
       </p>
       <input
@@ -227,23 +229,23 @@ export function SVGTemplateUploader({ onTemplateLoaded, onTemplateClear, colors,
         <Button
           onClick={() => fileInputRef.current?.click()}
           variant="outline"
-          className="w-full h-8 text-xs"
+          className="w-full h-9 text-[13px]"
         >
-          <Upload className="size-3 mr-1" />
+          <Upload className="size-3.5 mr-1" />
           Upload SVG Template
         </Button>
       ) : (
         <div className="flex items-center gap-2">
-          <div className="flex-1 px-2 py-1.5 rounded-md border border-input bg-muted text-xs truncate">
+          <div className="flex-1 min-w-0 px-3 py-2 rounded-md border border-border bg-muted text-[13px] truncate">
             {fileName || 'Custom template loaded'}
           </div>
           <Button
             onClick={handleClearTemplate}
             variant="outline"
             size="icon"
-            className="h-8 w-8"
+            className="h-9 w-9 flex-shrink-0"
           >
-            <X className="size-3" />
+            <X className="size-3.5" />
           </Button>
         </div>
       )}

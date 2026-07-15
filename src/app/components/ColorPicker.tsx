@@ -46,9 +46,11 @@ export function ColorPicker({
 
   return (
     <DndProvider backend={HTML5Backend}>
-      <div className="space-y-2">
+      <div className="space-y-2.5">
       <div className="flex items-center justify-between">
-        <Label className="text-xs">Colors ({colors.length}/{maxColors})</Label>
+        <Label className="text-xs uppercase tracking-wide text-muted-foreground font-medium">
+          Colors ({colors.length}/{maxColors})
+        </Label>
         <Button
           onClick={handleAddColor}
           disabled={colors.length >= maxColors}
@@ -60,8 +62,8 @@ export function ColorPicker({
           Add Color
         </Button>
       </div>
-      
-      <div className="grid grid-cols-2 gap-2">
+
+      <div className="grid grid-cols-2 gap-2.5">
         {colors.map((color, index) => (
           <ColorItem
             key={index}
@@ -122,17 +124,17 @@ const ColorItem = ({ color, index, moveColor, handleColorChange, handleRemoveCol
   return (
     <div
       ref={ref}
-      className={`flex items-center gap-1.5 ${isDragging ? 'opacity-50' : ''}`}
+      className={`flex items-center gap-2 ${isDragging ? 'opacity-50' : ''}`}
     >
-      <div ref={drag} className="cursor-move flex-shrink-0">
-        <GripVertical className="size-3 text-muted-foreground" />
+      <div ref={drag} className="cursor-grab flex-shrink-0">
+        <GripVertical className="size-3.5 text-muted-foreground" />
       </div>
       <div className="relative flex-shrink-0">
         <input
           type="color"
           value={color}
           onChange={(e) => handleColorChange(index, e.target.value)}
-          className="w-8 h-8 rounded-md cursor-pointer border-2 border-input"
+          className="w-9 h-9 rounded-[6px] cursor-pointer border border-border"
           style={{
             padding: 0,
             appearance: 'none',
@@ -145,7 +147,7 @@ const ColorItem = ({ color, index, moveColor, handleColorChange, handleRemoveCol
         type="text"
         value={color}
         onChange={(e) => handleColorChange(index, e.target.value)}
-        className="flex-1 min-w-0 h-8 px-2 rounded-md border border-input bg-background text-xs"
+        className="flex-1 min-w-0 h-9 px-2.5 rounded-md border border-border bg-input-background text-[13px]"
         placeholder="#000000"
       />
       <Button
@@ -155,7 +157,7 @@ const ColorItem = ({ color, index, moveColor, handleColorChange, handleRemoveCol
         variant="ghost"
         className="flex-shrink-0 h-8 w-8"
       >
-        <X className="size-3" />
+        <X className="size-3.5" />
       </Button>
     </div>
   );
