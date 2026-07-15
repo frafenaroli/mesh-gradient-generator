@@ -22,7 +22,8 @@ export function MeshGradient({ points, width = 1080, height = 1080 }: MeshGradie
       height={height}
       viewBox={`0 0 ${width} ${height}`}
       xmlns="http://www.w3.org/2000/svg"
-      className="w-full h-full"
+      preserveAspectRatio="xMidYMid slice"
+      className="w-full h-full block"
     >
       <defs>
         {points.map((point, index) => {

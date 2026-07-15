@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Shuffle, Copy, Download, Sparkles, Layers } from 'lucide-react';
+import { RefreshCw, Copy, Download, Sparkles, Layers } from 'lucide-react';
 import { Button } from './ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/card';
 import { Label } from './ui/label';
@@ -248,30 +248,32 @@ export function MeshGradientGenerator() {
   };
 
   return (
-    <div className="container mx-auto p-4 max-w-7xl">
-      <div className="mb-3 flex gap-3 items-start">
-        <div className="flex-shrink-0 mt-1">
-          <Layers className="size-8 text-accent-foreground" strokeWidth={1.5} />
+    <div className="max-w-[1180px] mx-auto">
+      <div className="flex gap-4 items-center pb-3 mb-3 border-b border-black/[0.08]">
+        <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-gradient-to-br from-[#4ECDC4] to-[#FF6B6B] shadow-sm flex items-center justify-center">
+          <Layers className="size-6 text-white" strokeWidth={1.75} />
         </div>
         <div>
-          <h1 className="mb-1 font-bold text-2xl">SVG Mesh Gradient Generator</h1>
-          <p className="text-muted-foreground text-sm">
-            Create beautiful mesh gradients with 3-8 colors using templates or random generation
+          <h1 className="mb-1.5 text-3xl font-bold tracking-[-0.01em] text-foreground">
+            SVG Mesh Gradient Generator
+          </h1>
+          <p className="text-[15px] text-muted-foreground leading-normal">
+            Create beautiful mesh gradients with 3–8 colors using templates or random generation
           </p>
         </div>
       </div>
 
-      <div className="grid lg:grid-cols-2 gap-4">
+      <div className="grid lg:grid-cols-2 gap-6">
         {/* Controls Panel */}
-        <div className="space-y-3 flex flex-col">
-          <Card className="border-0">
-            <CardHeader>
-              <CardTitle>Color Palette</CardTitle>
-              <CardDescription>
+        <div className="flex flex-col gap-2.5 min-w-0">
+          <Card className="rounded-2xl shadow-[0_1px_2px_rgba(0,0,0,0.03)] p-4 gap-3">
+            <CardHeader className="p-0">
+              <CardTitle className="text-[17px] font-semibold leading-tight">Color Palette</CardTitle>
+              <CardDescription className="text-[13px]">
                 Add colors manually or extract from an image
               </CardDescription>
             </CardHeader>
-            <CardContent className="space-y-3">
+            <CardContent className="p-0 flex flex-col gap-2.5">
               <ColorPicker
                 colors={colors}
                 onColorsChange={handleColorsChange}
@@ -282,9 +284,9 @@ export function MeshGradientGenerator() {
               <Button
                 onClick={handleRandomizeColors}
                 variant="outline"
-                className="w-full h-8 text-xs"
+                className="w-full h-8 text-[13px]"
               >
-                <Sparkles className="size-3 mr-1" />
+                <Sparkles className="size-3.5 mr-1" />
                 Randomize Colors
               </Button>
 
@@ -295,18 +297,20 @@ export function MeshGradientGenerator() {
             </CardContent>
           </Card>
 
-          <Card className="border-0">
-            <CardHeader>
-              <CardTitle>Gradient Template</CardTitle>
-              <CardDescription>
+          <Card className="rounded-2xl shadow-[0_1px_2px_rgba(0,0,0,0.03)] p-4 gap-3">
+            <CardHeader className="p-0">
+              <CardTitle className="text-[17px] font-semibold leading-tight">Gradient Template</CardTitle>
+              <CardDescription className="text-[13px]">
                 Choose a pattern for your mesh gradient
               </CardDescription>
             </CardHeader>
-            <CardContent className="space-y-3">
-              <div className="space-y-2">
-                <Label className="text-xs">Template</Label>
+            <CardContent className="p-0 flex flex-col gap-2.5">
+              <div className="space-y-1.5">
+                <Label className="text-xs uppercase tracking-wide text-muted-foreground font-medium">
+                  Template
+                </Label>
                 <Select value={selectedTemplate} onValueChange={handleTemplateChange}>
-                  <SelectTrigger size="sm" className="text-xs">
+                  <SelectTrigger className="h-8 text-[13px] bg-background border-border w-full">
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent>
@@ -323,8 +327,8 @@ export function MeshGradientGenerator() {
                 </Select>
               </div>
 
-              <Button onClick={handleGenerateRandom} className="w-full h-8 text-xs">
-                <Shuffle className="size-3 mr-1" />
+              <Button onClick={handleGenerateRandom} className="w-full h-8 text-[13px]">
+                <RefreshCw className="size-3.5 mr-1" />
                 Generate Random
               </Button>
 
@@ -339,35 +343,37 @@ export function MeshGradientGenerator() {
         </div>
 
         {/* Preview Panel */}
-        <div className="lg:sticky lg:top-4 space-y-3 flex flex-col h-fit w-full">
-          <Card className="w-full border-0">
-            <CardHeader>
-              <CardTitle>Preview</CardTitle>
-              <CardDescription>
+        <div className="lg:sticky lg:top-6 flex flex-col gap-2.5 h-fit w-full min-w-0">
+          <Card className="w-full rounded-2xl shadow-[0_1px_2px_rgba(0,0,0,0.03)] p-4 gap-3">
+            <CardHeader className="p-0">
+              <CardTitle className="text-[17px] font-semibold leading-tight">Preview</CardTitle>
+              <CardDescription className="text-[13px]">
                 Your mesh gradient in real-time
               </CardDescription>
             </CardHeader>
-            <CardContent className="w-full">
-              <div className="mesh-gradient-preview aspect-square rounded-lg overflow-hidden bg-white max-h-[46vh] w-full">
-                <MeshGradient points={meshPoints} width={1080} height={1080} />
+            <CardContent className="p-0 w-full">
+              <div className="bg-input-background rounded-xl p-3">
+                <div className="mesh-gradient-preview aspect-square rounded-lg overflow-hidden bg-white max-h-[44vh] w-full border border-black/[0.06]">
+                  <MeshGradient points={meshPoints} width={1080} height={1080} />
+                </div>
               </div>
             </CardContent>
           </Card>
 
-          <Card className="w-full border-0">
-            <CardHeader>
-              <CardTitle>Export</CardTitle>
-              <CardDescription>
+          <Card className="w-full rounded-2xl shadow-[0_1px_2px_rgba(0,0,0,0.03)] p-4 gap-3">
+            <CardHeader className="p-0">
+              <CardTitle className="text-[17px] font-semibold leading-tight">Export</CardTitle>
+              <CardDescription className="text-[13px]">
                 Download or copy your gradient
               </CardDescription>
             </CardHeader>
-            <CardContent className="flex gap-2 w-full">
-              <Button onClick={handleCopySVG} variant="outline" className="flex-1 h-8 text-xs">
-                <Copy className="size-3 mr-1" />
+            <CardContent className="p-0 flex gap-2.5 w-full">
+              <Button onClick={handleCopySVG} variant="outline" className="flex-1 h-9 text-[13px]">
+                <Copy className="size-3.5 mr-1" />
                 Copy SVG
               </Button>
-              <Button onClick={handleDownload} variant="outline" className="flex-1 h-8 text-xs">
-                <Download className="size-3 mr-1" />
+              <Button onClick={handleDownload} variant="outline" className="flex-1 h-9 text-[13px]">
+                <Download className="size-3.5 mr-1" />
                 Download
               </Button>
             </CardContent>
